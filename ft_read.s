@@ -10,8 +10,10 @@ ft_read:
 
 error:
 	neg rax
+	push rbx
 	mov rbx, rax
 	call __errno_location
 	mov [rax], rbx
+	pop rbx
 	mov rax, -1
 	ret

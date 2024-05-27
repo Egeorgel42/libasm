@@ -5,18 +5,20 @@ SRC = main.c \
 test_write_read.c \
 test_strcmp.c \
 test_strcpy.c \
-test_strlen.c 
+test_strlen.c \
+test_strdup.c
 OBJ = ${SRC:.c=.o}
 LIBSRC = ft_strlen.s \
 ft_strcpy.s \
 ft_strcmp.s \
 ft_write.s \
-ft_read.s
+ft_read.s \
+ft_strdup.s
 LIBOBJ = ${LIBSRC:.s=.o}
 CFLAGS = -Wall -Wextra -Werror -g
 NAME = tests
 
-all: $(NAME)
+all: $(LIB)
 
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -static -lc -L. -lasm -o $(NAME)
