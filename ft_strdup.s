@@ -32,5 +32,3 @@ copy:
 return:
 	pop rbx
 	ret
-
-
