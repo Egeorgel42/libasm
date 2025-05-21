@@ -7,7 +7,8 @@ tests/test_write_read.c \
 tests/test_strcmp.c \
 tests/test_strcpy.c \
 tests/test_strlen.c \
-tests/test_strdup.c
+tests/test_strdup.c \
+tests/test_utils.c
 
 OBJ = ${SRC:.c=.o}
 

@@ -72,7 +72,8 @@ int	*test_write_read_line(char *value, int write_len, int read_len, int write_fd
 		is_set = false;
 	}
 
-	printf("%s\n", spacing);
+	if (spacing)
+		printf("%s\n", spacing);
 
 	if (is_set)
 		test_write_line(value, write_len, write_fd, write_fd, is_set);
@@ -105,9 +106,7 @@ int	*test_write_read_line(char *value, int write_len, int read_len, int write_fd
 
 void	test_write_read()
 {
-	char spacing[188];
-	memset(spacing, '=', 187);
-	spacing[187] = '\0';
+	seperate_start(187, "write && read");
 
 	char middle_spacing[188];
 	memset(middle_spacing, '-', 187);
@@ -115,9 +114,8 @@ void	test_write_read()
 	middle_spacing[186] = '|';
 	middle_spacing[187] = '\0';
 
-	printf("|  write && read  |\n");
 
-	test_write_read_line("", 1, 1, 0, 0, spacing, true);
+	test_write_read_line("", 1, 1, 0, 0, NULL, true);
 	test_write_read_line(NULL, 1, 1, 0, 0, middle_spacing, true);
 	test_write_read_line("Hi", 1, 20, -1, -1, middle_spacing, true);
 	test_write_read_line("Hi", 1, 20, 76, 76, middle_spacing, true);
@@ -137,5 +135,5 @@ void	test_write_read()
 	test_read_line(1, read_fd[0], read_fd[1], false);
 	free(read_fd);
 	
-	printf("%s\n", spacing);
+	seperate_end(187);
 }

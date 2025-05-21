@@ -7,24 +7,20 @@ void	test_strdup_line(char *str)
 
 	val = strdup(str);
 	ftval = ft_strdup(str);
-	printf("| value = %-31s| strdup = %-30s| ft_strdup = %-27s|\n", str, val, ftval);
+	printf("| value = %-31s| strdup = %-30s| ft_strdup = %-27s|", str, val, ftval);
+	confirm_equality(!strcmp(val, ftval) && str != val && str != ftval && errno == 0);
 	free(val);
 	free(ftval);
 }
 
 void	test_strdup()
 {
-	char spacing[125];
-	memset(spacing, '=', 124);
-	spacing[124] = '\0';
-	
-	printf("|  strdup  |\n");
-	printf("%s\n", spacing);
+	seperate_start(124, "strdup");
 
 	test_strdup_line("");
 	test_strdup_line("hi");
 	test_strdup_line("test");
 	test_strdup_line("blabla etc...");
 	
-	printf("%s\n", spacing);
+	seperate_end(124);
 }

@@ -19,47 +19,41 @@ void	replace_null(char *dest, char *src, int len)
 	return;
 }
 
-void	strcpy_test_line(char *str1, char *dest, char *src, const char *reset_value)
+void	strcpy_test_line(char *s1, char *s2)
 {
-	int i = ft_strlen(reset_value);
+	char printf_buff1[50];
+	char printf_buff2[50];
+	char* dest = strdup(s1);
+	char* src = strdup(s2);
+	char* reset = strdup(dest);
+	int i = ft_strlen(dest);
 
 	printf("| value_src = %-27s| value_dest = %-26s|", src, dest);
-	ft_strcpy(dest, reset_value);
 
 	strcpy(dest, src);
-	replace_null(str1, dest, i);
-	printf(" strcpy = %-30s|", str1);
-	ft_strcpy(dest, reset_value);
+	replace_null(printf_buff1, dest, i);
+	printf(" strcpy = %-30s|", printf_buff1);
 
+	ft_strcpy(dest, reset);
 	ft_strcpy(dest, src);
-	replace_null(str1, dest, i);
-	printf(" ft_strcpy = %-27s|\n", str1);
-	ft_strcpy(dest, reset_value);
+	replace_null(printf_buff2, dest, i);
+	printf(" ft_strcpy = %-27s|", printf_buff2);
+
+	confirm_equality(!strcmp(printf_buff1, printf_buff2) && errno == 0);
+
+	free(reset);
 }
 
 void	test_strcpy()
 {
-	char	str1[50];
-	char	str2[] = "oooooooooooooooooooooooooo";
-	char	str3[] = "Hi";
-	char	str4[] = "bruh";
-	char	str5[] = "";
-	char	str6[] = "1";
-	char	str7[] = "2";
+	seperate_start(165, "strcpy");
 
-	char spacing[166];
-	memset(spacing, '=', 165);
-	spacing[165] = '\0';
+	strcpy_test_line("oooooooooooooooooooooooooo", "");
+	strcpy_test_line("oooooooooooooooooooooooooo", "bruh");
+	strcpy_test_line("bruh", "Hi");
+	strcpy_test_line("Hi", "");
+	strcpy_test_line("", "1");
+	strcpy_test_line("1", "2");
 
-	printf("|  strcpy  |\n");
-	printf("%s\n", spacing);
-
-	strcpy_test_line(str1, str2, str5, "oooooooooooooooooooooooooo");
-	strcpy_test_line(str1, str2, str4, "oooooooooooooooooooooooooo");
-	strcpy_test_line(str1, str4, str3, "bruh");
-	strcpy_test_line(str1, str3, str5, "Hi");
-	strcpy_test_line(str1, str6, str5, "1");
-	strcpy_test_line(str1, str6, str7, "1");
-	
-	printf("%s\n", spacing);
+	seperate_end(165);
 }

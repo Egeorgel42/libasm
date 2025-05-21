@@ -2,16 +2,13 @@
 
 void	test_strcmp_line(char *str1, char *str2)
 {
-	char *value_1 = strjoin(" value_1 = ", str1);
-	char *value_2 = strjoin(" value_2 = ", str2);
-	char *strcmp_val = strjoin(" strcmp = ", strcmp(str1, str2));
-	char *ft_strcmp_val = strjoin(" ft_strcmp = ", strcmp(str1, str2));
-	char is_ko[3] = " OK";
+	char *value_1 = concat(" value_1 = ", str1);
+	char *value_2 = concat(" value_2 = ", str2);
+	char *strcmp_val = concat_int(" strcmp = ", strcmp(str1, str2));
+	char *ft_strcmp_val = concat_int(" ft_strcmp = ", strcmp(str1, str2));
 
-	if (strcmp(str1, str2) != ft_strcmp(str1, str2))
-		strcpy(is_ko, " KO");
-
-	printf("|%-40s|%-40s|%-40s|%-40s|%s\n", value_1, value_2 , strcmp_val, ft_strcmp_val, is_ko);
+	printf("|%-40s|%-40s|%-40s|%-40s|", value_1, value_2 , strcmp_val, ft_strcmp_val);
+	confirm_equality(strcmp(str1, str2) == strcmp(str1, str2) && errno == 0);
 
 	free(value_1);
 	free(value_2);
@@ -21,12 +18,7 @@ void	test_strcmp_line(char *str1, char *str2)
 
 void	test_strcmp()
 {
-	char spacing[166];
-	memset(spacing, '=', 165);
-	spacing[165] = '\0';
-
-	printf("|  strcmp  |\n");
-	printf("%s\n", spacing);
+	seperate_start(165, "strcmp");
 
 	test_strcmp_line("", "");
 	test_strcmp_line("", "1");
@@ -37,7 +29,7 @@ void	test_strcmp()
 	test_strcmp_line("test", "testssssssss");
 	test_strcmp_line("testss", "test");
 
-	printf("%s\n", spacing);
+	seperate_end(165);
 
 	return;
 }
