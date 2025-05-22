@@ -50,3 +50,11 @@ void	confirm_equality(bool value)
 	else
 		printf(" KO\n");
 }
+
+void	seperate_test(int width)
+{
+	printf("|");
+	for (int i = 1; i < width - 1; i++)
+		printf("-");
+	printf("|\n");
+}

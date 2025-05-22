@@ -10,6 +10,7 @@
 
 void	seperate_start(int width, char* title);
 void	seperate_end(int width);
+void	seperate_test(int width);
 void	confirm_equality(bool value);
 char*	concat(const char *s1, const char *s2);
 char*	concat_int(const char *s1, const int nbr);
