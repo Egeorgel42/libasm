@@ -41,6 +41,8 @@ void	strcpy_test_line(char *s1, char *s2)
 
 	confirm_equality(!strcmp(printf_buff1, printf_buff2) && errno == 0);
 
+	free(dest);
+	free(src);
 	free(reset);
 }
 
@@ -52,7 +54,7 @@ void	test_strcpy()
 	strcpy_test_line("oooooooooooooooooooooooooo", "bruh");
 	strcpy_test_line("bruh", "Hi");
 	strcpy_test_line("Hi", "");
-	strcpy_test_line("", "1");
+	strcpy_test_line("", "");
 	strcpy_test_line("1", "2");
 
 	seperate_end(165);

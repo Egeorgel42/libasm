@@ -26,7 +26,7 @@ NAME = test
 all: $(LIB)
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -static -z noexecstack -lc -L. -lasm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -fsanitize=address -z noexecstack -L. -lasm -o $(NAME)
 
 $(LIB): $(LIBOBJ)
 	ar rcs $(LIB) $(LIBOBJ)
